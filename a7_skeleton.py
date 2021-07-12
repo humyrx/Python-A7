@@ -9,10 +9,10 @@
 ### Description: a simple program to perform addition and subtraction   ###
 ### using colors.                                                       ###
 ###########################################################################
-# Helpful to look at: Ch 12 Excercise 10
 
 # dict with the color names as key and the values as the associated RGB tuples
-# used when the user enters a name and after the rgb values have been calculated (reverse look up to see if the rgb values matches a name)
+# used when the user enters a color name 
+# and after the rgb values have been calculated (reverse look up to see if the rgb values matches a name)
 colors = {
     # primary colors
     "red": (1, 0, 0),
@@ -28,11 +28,12 @@ colors = {
 }
 
 
+
 class Color(object):
     def __init__(self,r,g,b):
         # coerce values into required range by saturating
-        if r < 0: r = 0
-        if r > 1: r = 1
+        if r < 0: r = 0 # if value is less than 0, make it 0
+        if r > 1: r = 1 # if value is greater than 1, make it 1
         self.red = float(r)
 
         if g < 0: g = 0
@@ -45,10 +46,12 @@ class Color(object):
 
 
     def __add__(self,x):
+        # add two colors
         return Color(self.red+x.red, self.green+x.green, self.blue+x.blue)
 
 
     def __sub__(self,x):
+        # subtract two colors
         return Color(self.red-x.red, self.green-x.green, self.blue-x.blue)
 
 
@@ -63,19 +66,21 @@ class Color(object):
         return self.__str__()
 
 
+
 def convert_userinput(acolor):
     # if user entered the name of the color
     if acolor.isalpha():
-        for key in colors:
-            if acolor == key:
-                acolor_rgb = colors[key]
+        for key in colors: # traverse through the colors dict
+            if acolor == key: # if color name matches a key in the colors dict
+                acolor_rgb = colors[key] # get and set the rgb values for the color
 
     # if user entered the (r, g, b) values for the color
     else:
-        acolor_arr = acolor.replace("(", "").replace(")", ""). replace(" ", "").split(",")
+        acolor_arr = acolor.replace("(", "").replace(")", ""). replace(" ", "").split(",") # clean up the input to get an array of numbers
         acolor_rgb = tuple([float(item) for item in acolor_arr]) # convert each element in the array into a float, then convert the array into a tuple
 
     return Color(acolor_rgb[0], acolor_rgb[1], acolor_rgb[2])
+
 
 
 ###############################################################################################
