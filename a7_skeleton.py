@@ -86,7 +86,8 @@ def convert_userinput(acolor):
 ###############################################################################################
 ######################################## MAIN FUNCTION ########################################
 print()
-# print message explaining purpose 
+print("To practice our understanding of classes and OOP, a simple program for performing addition and subtraction using colors is implemented. ")
+print("The user is asked to enter the name or rgb values for two colors. These colors will then be used to perform the operations. \n")
 
 color1 = input("Enter the name or (r, g, b) values for color 1: ")
 color2 = input("Enter the name or (r, g, b) values for color 2: ")

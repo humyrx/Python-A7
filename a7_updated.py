@@ -76,6 +76,9 @@ class Color(object):
 
 ###############################################################################################
 ######################################## MAIN FUNCTION ########################################
+print()
+print("To practice our understanding of classes and OOP, a simple program for performing addition and subtraction using colors is implemented. ")
+print("The user is asked to enter the name or rgb values for two colors. These colors will then be used to perform the operations. \n")
 
 def main_function():
     color_one = input("Enter the name or (r, g, b) values for color 1: ")
@@ -96,12 +99,13 @@ def main_function():
     print("Color1 + Color2 = ", color1 + color2)
     print("Color1 - Color2 = ", color1 - color2)
 
-    option = input("Would you like to try again? (y for yes, others for no)") ## Ask if the user want to try again 
+    option = input("Would you like to try again? (y for yes, others for no): ") ## Ask if the user want to try again 
     while True:
-       if option=="y":
-          main_function() ##If yes, run the main function again
+       if option.upper() == "Y":
+           print()
+           main_function() ##If yes, run the main function again
        else:
-          print("Goodbye")
+          print("\nGoodbye")
           loop = False
           exit()
 
