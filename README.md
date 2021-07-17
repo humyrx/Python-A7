@@ -20,3 +20,10 @@ Documentation of the solution: Humyra Chowdhury / Weiyi Huang / Santiago Monsalv
 
 ## Planning
 Prior to implementation of the code, the team discussed the algorithm and general flow that will be used to implement the program. Along with this, we also refreshed our understanding of classes and OOP.
+
+# Implementation 
+## Project Notes
+
+# Testing
+## Testing the Solution
+## Future Improvements
