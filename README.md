@@ -23,9 +23,11 @@ Prior to implementation of the code, the team discussed the algorithm and genera
 
 # Implementation 
 ## Project Notes
+While designing this "app", we need to do some research to know about and understand how to perform addition and subtraction using colors. We start by designing a class Color with three attributes(the amount of R,G and B in a floating point representation, withing the range from 0 to 1). Our class implements an initializer (“constructor”) that also include code to coerce the r,g,b values into required range (by clipping values below 0 or above 1). We also have a string representation method for "pretty printing" the contents of a Color object. Also, we create a dictionary with the color name as key and the values as the associated RGB tuples.
 ## Screenshot
 ![screenshot](/a7screenshot.png)
 
 # Testing
 ## Testing the Solution
 ## Future Improvements
+For the future improvements, we could prompt user to choose colors on the system, and the program will display the result color image onto the screen. Besides, we also could allow user to chose more than two colors and have more complex calculation.
