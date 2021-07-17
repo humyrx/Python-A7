@@ -56,11 +56,13 @@ class Color(object):
 
     def __str__(self):
         # convert to a readable string
+        # get the name of the color with the matching rgb values
         if (self.red, self.green, self.blue) in colors.values():
             for key,val in colors.items():
                 if val == (self.red, self.green, self.blue):
                     return key
         else:
+            # round float values to one decimal place
             self.red = round(self.red,1)
             self.green = round(self.green,1)
             self.blue = round(self.blue,1)
@@ -81,12 +83,13 @@ print("To practice our understanding of classes and OOP, a simple program for pe
 print("The user is asked to enter the name or rgb values for two colors. These colors will then be used to perform the operations. \n")
 
 def main_function():
+    # get user input
     color_one = input("Enter the name or (r, g, b) values for color 1: ")
     color_two = input("Enter the name or (r, g, b) values for color 2: ")
 
-    try:
+    try: # if rgb values entered, 
         check = eval(color_one)
-    except:
+    except: # if name entered, get rgb
         check = colors[color_one]
     color1 = Color(check[0],check[1],check[2])
 
@@ -96,8 +99,8 @@ def main_function():
         check = colors[color_two]
     color2 = Color(check[0],check[1],check[2])
 
-    print("Color1 + Color2 = ", color1 + color2)
-    print("Color1 - Color2 = ", color1 - color2)
+    print("Color1 + Color2 = ", color1 + color2) # add
+    print("Color1 - Color2 = ", color1 - color2) # subtract
 
     option = input("Would you like to try again? (y for yes, others for no): ") ## Ask if the user want to try again 
     while True:
