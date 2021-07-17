@@ -1,4 +1,4 @@
-# ###########################################################################
+###########################################################################
 ### COP 4045 - Python Programming - Dr. Oge Marques - FAU - Summer 2021 ###
 ###          Assignment 7: Color addition and subtraction               ###
 ###          -- Team Members --                                         ###
@@ -26,7 +26,6 @@ colors = {
     "black": (0, 0, 0),
     "white": (1, 1, 1)
 }
-
 
 
 class Color(object):
@@ -57,29 +56,21 @@ class Color(object):
 
     def __str__(self):
         # convert to a readable string
-        rgb = "(" + str(round(self.red, 1)) + ", " + str(round(self.green, 1)) + ", " + str(round(self.blue, 1)) + ")"
-        return rgb
+        if (self.red, self.green, self.blue) in colors.values():
+            for key,val in colors.items():
+                if val == (self.red, self.green, self.blue):
+                    return key
+        else:
+            self.red = round(self.red,1)
+            self.green = round(self.green,1)
+            self.blue = round(self.blue,1)
+            return str((self.red, self.green, self.blue))
 
 
     def __repr__(self):
         # print a representaion of object
         return self.__str__()
 
-
-
-def convert_userinput(acolor):
-    # if user entered the name of the color
-    if acolor.isalpha():
-        for key in colors: # traverse through the colors dict
-            if acolor == key: # if color name matches a key in the colors dict
-                acolor_rgb = colors[key] # get and set the rgb values for the color
-
-    # if user entered the (r, g, b) values for the color
-    else:
-        acolor_arr = acolor.replace("(", "").replace(")", ""). replace(" ", "").split(",") # clean up the input to get an array of numbers
-        acolor_rgb = tuple([float(item) for item in acolor_arr]) # convert each element in the array into a float, then convert the array into a tuple
-
-    return Color(acolor_rgb[0], acolor_rgb[1], acolor_rgb[2])
 
 
 
@@ -89,19 +80,45 @@ print()
 print("To practice our understanding of classes and OOP, a simple program for performing addition and subtraction using colors is implemented. ")
 print("The user is asked to enter the name or rgb values for two colors. These colors will then be used to perform the operations. \n")
 
-color1 = input("Enter the name or (r, g, b) values for color 1: ")
-color2 = input("Enter the name or (r, g, b) values for color 2: ")
+def main_function():
+    color_one = input("Enter the name or (r, g, b) values for color 1: ")
+    color_two = input("Enter the name or (r, g, b) values for color 2: ")
 
-c1 = convert_userinput(color1)
-c2 = convert_userinput(color2)
+    try:
+        check = eval(color_one)
+    except:
+        check = colors[color_one]
+    color1 = Color(check[0],check[1],check[2])
 
-added_c = c1.__add__(c2)
-print("Color 1 + Color 2 = ", added_c)
+    try:
+        check = eval(color_two)
+    except:
+        check = colors[color_two]
+    color2 = Color(check[0],check[1],check[2])
 
-subt_c = c1.__sub__(c2)
-print("Color 1 - Color 2 = ", subt_c)
+    print("Color1 + Color2 = ", color1 + color2)
+    print("Color1 - Color2 = ", color1 - color2)
+
+    option = input("Would you like to try again? (y for yes, others for no): ") ## Ask if the user want to try again 
+    while True:
+       if option.upper() == "Y":
+           print()
+           main_function() ##If yes, run the main function again
+       else:
+          print("\nGoodbye")
+          loop = False
+          exit()
+
+main_function()
 
 
 
 
 
+
+
+
+
+       
+            
+           

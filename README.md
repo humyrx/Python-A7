@@ -1,10 +1,10 @@
 # Assignment 7: Color addition and subtraction
-# COP 4045 Intro to Python
-# Dr. Oge Marques
- Group Members
-## Humyra Chowdhury Z23405864
-## Weiyi Huang Z23502284
-## Santiago Monsalve-Mejia Z23502722
+## COP 4045 Intro to Python
+## Dr. Oge Marques
+## Group Members
+### Humyra Chowdhury Z23405864
+### Weiyi Huang Z23502284
+### Santiago Monsalve-Mejia Z23502722
 
 
 # Description
@@ -23,6 +23,8 @@ Prior to implementation of the code, the team discussed the algorithm and genera
 
 # Implementation 
 ## Project Notes
+## Screenshot
+![screenshot](/a7screenshot.png)
 
 # Testing
 ## Testing the Solution
