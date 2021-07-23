@@ -1,3 +1,7 @@
+# Link to Google Colab
+https://colab.research.google.com/drive/1CSn4qz7DgxMmttJYP2rOGPe6rECDQQh2?usp=sharing
+
+## Resources
 Heron's Formula
 https://www.mathopenref.com/heronsformula.html
 
