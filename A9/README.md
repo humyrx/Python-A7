@@ -1,3 +1,6 @@
+# Google Colab 
+Link: https://colab.research.google.com/drive/1AIt716paEQtdogyFsuB7pVoxS4aalMyL?usp=sharing
+
 # Progess Updates
 ### 7/27 6:19 AM Humyra
 A9 added to GitHub. It is still in progress. Code Listing 10.15 was copied and pasted. Only the make_data_set, sums_lists, make_averages, and train_classifier were modified and tested for the assignment. The rest of the code (from line 71 and onward) is from the textbook and has not been changed.  
