@@ -6,7 +6,6 @@ import csv
 def make_data_set(file_name):
     input_set_list = []
     fields = [] # intialize the titles
-    patient_id = 0
 
     # read csv file
     with open(file_name, 'r') as inputfile:
@@ -16,10 +15,9 @@ def make_data_set(file_name):
         # extract each data row 
         for row in inputfile_reader:
             # get each diagnosis and attribute for a patient and create a tuple
-            patient_id += 1
-            patient_tuple = patient_id, int(row[8]), int(row[0]), int(row[1]), int(row[2]), int(row[3]), \
-                int(row[4]), float(row[5]), float(row[6]), int(row[7])
-            print("patient_tuple ", patient_tuple)
+            patient_tuple = int(row[0]), int(row[9]), int(row[1]), int(row[2]), int(row[3]), \
+                int(row[4]), int(row[5]), float(row[6]), float(row[7]), int(row[8])
+            # print("patient_tuple ", patient_tuple)
             input_set_list.append(patient_tuple) # append tuple to list
         # print("input_set_list ", input_set_list)
         
@@ -59,14 +57,14 @@ def train_classifier(training_set_list):
             diabetic_sums_list = sum_lists(diabetic_sums_list, patient_tuple[2:])
             diabetic_count += 1
 
-    print("nondiabetic_sums_list ", nondiabetic_sums_list, "\ndiabetic_sums_list ", diabetic_sums_list)
+    # print("nondiabetic_sums_list ", nondiabetic_sums_list, "\ndiabetic_sums_list ", diabetic_sums_list)
     # find averages of each set of nondiabetic or diabetic attributes
     nondiabetic_averages_list = make_averages(nondiabetic_sums_list, nondiabetic_count)
     diabetic_averages_list = make_averages(diabetic_sums_list, diabetic_count)
-    print("nondiabetic_averages_list ", nondiabetic_averages_list, "\ndiabetic_averages_list ", diabetic_averages_list)
+    # print("nondiabetic_averages_list ", nondiabetic_averages_list, "\ndiabetic_averages_list ", diabetic_averages_list)
     # seperator values for each attribute averages nondiabetic and diabetic
     classifier_list = make_averages(sum_lists(nondiabetic_averages_list, diabetic_averages_list), 2)
-    print("classifier_list ", classifier_list)
+    # print("classifier_list ", classifier_list)
     return classifier_list
 
 
@@ -89,7 +87,7 @@ def classify_test_set(test_set_list, classifier_list):
             else:
                 nondiabetic_count += 1
         result_tuple = (id_str, nondiabetic_count, diabetic_count, diagnosis_str)
-        print("result_tuple ", result_tuple)
+        # print("result_tuple ", result_tuple)
         result_list.append(result_tuple)
     return result_list
 
@@ -97,24 +95,28 @@ def classify_test_set(test_set_list, classifier_list):
 # Check results and report count of inaccurate classifications
 def report_results(result_list):
     total_count = 0
-    inaccurate_count = 0
+    inaccurate_count, false_negative, false_positive = 0, 0, 0
     for result_tuple in result_list:
         nondiabetic_count, diabetic_count, diagnosis_str = result_tuple[1:4]
-        print("result_tuple[1:4] ", result_tuple[1:4])
+        # print("result_tuple[1:4] ", result_tuple[1:4])
         total_count += 1
         if (nondiabetic_count > diabetic_count) and (diagnosis_str == 1):
             # Wrong classification
             inaccurate_count += 1
+            false_negative += 1
         elif (nondiabetic_count < diabetic_count) and (diagnosis_str == 0):
             # Wrong classification
             inaccurate_count += 1
-    print("Of ", total_count, " patients, there were ", inaccurate_count, " inaccuracies")
+            false_positive += 1
+    print("Of", total_count, "patients, there were", inaccurate_count, "inaccuracies")
+    print("There were", false_negative, "false negatives and", false_positive, "false positives")
+    print("The percent accuracy is", ((total_count-inaccurate_count)/total_count)*100, "%")
 
 
 def main():
     print()
     print("Reading in training data...")
-    training_file = "test_data.csv"
+    training_file = "training_data.csv"
     training_set_list = make_data_set(training_file)
     print("Done reading training data. \n")
 
@@ -133,6 +135,6 @@ def main():
     print("Done classifying. \n")
 
     report_results(result_list)
-    print("Program finished.")
+    print("\nProgram finished.\n")
 
 main()

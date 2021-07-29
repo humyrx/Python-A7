@@ -17,6 +17,7 @@ pg 521 is where you see the 5 main functions that the professor is referring to 
 
 # Design Decisions
 Choosing a data struct (pg 523)
+Splitting diabetes.csv as 80:20. 80 for training and 20 for testing.
 
 
 # Resources
