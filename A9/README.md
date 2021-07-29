@@ -9,6 +9,10 @@ For temporary testing purposes, a csv file containing only some of the data from
 ### 7/27 7:19 AM Humyra
 The code for A9 is complete and works accurately with test_data.csv. All that needs to be done is incorporation of diabetes.csv and how to split that file for training and testing. I think the professor discusses how he wants this done in the lecture?
 
+### 7/29 1:43 AM Humyra
+A9 complete. diabetes.csv file split 80:20 to create training_data.csv and test_data.csv. User also is given the option to use the diabetes.csv file for both training and testing.
+
+
 # Notes
 outcome = 0 means no diabetes  
 pg 541 is the sample code  
